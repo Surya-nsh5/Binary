@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Cache Replacement</title>
+    <link rel="stylesheet" href="CSS/cache.css">
+</head>
+
+<body>
+
+    <div class="container">
+        
+        <h1>Intelligence Cache Replacement Using ML</h1>
+        <div class="controls card">
+            <div class="control-group-main">
+                <label for="page-request">Request Page:</label>
+                <input type="text" id="page-request" placeholder="e.g., A, B, C...">
+                <button id="request-btn">Request</button>
+            </div>
+            
+            <div class="control-group-policy">
+                <label for="policy-select">Policy:</label>
+                <select id="policy-select" title="Choose cache eviction policy">
+                    <option value="LRU">LRU</option>
+                    <option value="MRU">MRU</option>
+                    <option value="ML_SERVER" selected>ML-Based</option>
+                </select>
+                
+                </div>
+        </div>
+
+        <div class="main-content">
+            <div class="cache-area card">
+                <h2>Cache State (Size: 4)</h2>
+                <div id="cache-memory" class="cache-container">
+                    </div>
+            </div>
+
+            <div class="details-area">
+                <div class="stats-container card">
+                    <h2>Statistics</h2>
+                    <div id="stats">
+                        <p><strong>Cache Hits:</strong> <span id="cache-hits">0</span></p>
+                        <p><strong>Cache Misses:</strong> <span id="cache-misses">0</span></p>
+                        <p><strong>Hit Rate:</strong> <span id="hit-rate">0.0%</span></p>
+                    </div>
+                </div>
+
+                <div class="log-column card">
+                    <h2>Simulation Log</h2>
+                    <div id="simulation-log" class="log-container">
+                        <p class="log-info">Waiting for first request...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JavaScript/cache.js"></script>
+</body>
+
+</html>
