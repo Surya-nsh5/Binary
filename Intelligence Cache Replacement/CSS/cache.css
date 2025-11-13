@@ -1,0 +1,302 @@
+/* General Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Main Container */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 25px 0;
+}
+
+/* --- Controls --- */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.control-group-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.control-group-policy {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.controls label {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+/* Style inputs and selects to match */
+input[type="text"],
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    min-width: 150px;
+}
+
+select {
+    cursor: pointer;
+}
+
+/* Custom Checkbox Label */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+    cursor: pointer;
+    user-select: none; /* Prevent text selection on click */
+}
+
+.checkbox-label input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+/* --- Cache Visualization --- */
+.cache-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 110px;
+    padding: 5px;
+}
+
+.cache-block {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.cache-block.empty {
+    color: #999;
+    border-style: dashed;
+    border-color: #999;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+/* State highlights */
+.cache-block.highlight-hit {
+    background-color: #e6ffed; /* Light green */
+    border-color: #28a745;
+    transform: scale(1.05);
+}
+
+.cache-block.highlight-miss {
+    background-color: #fff0f1; /* Light red */
+    border-color: #dc3545;
+    animation: fadeIn 0.3s ease;
+}
+
+.cache-block.highlight-evict {
+    background-color: #fff8e1; /* Light orange */
+    border-color: #b35900;
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- Stats & Log Layout --- */
+.layout-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stats-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.log-column {
+    flex: 2;
+    min-width: 300px;
+}
+
+/* Statistics */
+.stats-container {
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+.stat-item:last-child {
+    border-bottom: none;
+}
+.stat-item span {
+    font-weight: bold;
+}
+
+/* Log Container */
+.log-container {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fdfdfd;
+    border-radius: 4px;
+}
+
+.log-container p {
+    margin: 0 0 5px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.log-container p:last-child {
+    border-bottom: none;
+}
+
+.log-hit { color: #006400; } /* Dark Green */
+.log-miss { color: #8B0000; } /* Dark Red */
+.log-evict { color: #b35900; } /* Orange/Brown */
+.log-info { color: #555; }
+
+
+/* --- 💡 FIXED Responsive Media Query --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    /* Stack the stats and log columns vertically */
+    .layout-row {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* Force columns to take full width */
+    .stats-column,
+    .log-column {
+        min-width: 100%;
+        flex: 1;
+    }
+
+    /* Make cache blocks a bit smaller */
+    .cache-block {
+        width: 80px;
+        height: 80px;
+        font-size: 1rem;
+    }
+
+    /* Center the cache blocks */
+    .cache-container {
+        justify-content: center;
+    }
+
+    /* --- Button Fix: Stack the main controls --- */
+    .control-group-main {
+        flex-direction: column; /* Stack label, input, and button */
+        align-items: stretch; /* Make children full-width */
+        gap: 8px;
+    }
+
+    .control-group-main label {
+         margin-bottom: 0; /* Reset margin */
+         text-align: left;
+    }
+
+    .control-group-main input[type="text"] {
+        min-width: unset; /* Remove the minimum width */
+    }
+    
+    .control-group-main button {
+        width: 100%; /* Make button full-width */
+    }
+
+    /* Stack policy controls too */
+    .control-group-policy {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    
+    .control-group-policy label {
+        margin-bottom: 0;
+    }
+}
